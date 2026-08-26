@@ -1,0 +1,34 @@
+.login-cadastro {
+    background-color: #131313;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.titulos-login {
+    display: flex;
+    
+}
+
+.login-principal {
+    background-color: #1c1c1c;
+    border-style: solid, #262626;
+    border-radius: 12px;
+    width: 1000px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    background-color: #131313;
+    border-style: solid, #262626;
+    border-radius: 12px;
+    width: 500px;
+    height: 500px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    color: aliceblue;
+}
