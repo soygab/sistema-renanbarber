@@ -1,51 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - RenanBarber</title>
+    <meta name="theme-color" content="#101010">
+    <title>Login | Renan Barber</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/public/styles/style.css">
 </head>
 <body>
-    <section class="login-cadastro">
-        <div class="login-principal">    
-
-            <div class="logo">
-                <img src="/public/image/logo_renanbarber.svg" alt="Logo RenanBarber">
-            </div>
-            
-            <div class="titulos-login">
-                <h1>Entrar</h1>
-                <h1>Cadastrar</h1>
+    <main class="auth-page">
+        <section class="auth-card" aria-labelledby="auth-title">
+            <div class="auth-brand" aria-label="Renan Barber">
+                <span class="brand-glow brand-glow--blue" aria-hidden="true"></span>
+                <span class="brand-glow brand-glow--red" aria-hidden="true"></span>
+                <img src="/public/image/logo_renanbarber.svg" alt="Renan Barber" class="brand-logo">
             </div>
 
-            <div class="login">
-                <label class="control-label" for="email-login">E-mail</label>
-                <input type="text" class="form-group" placeholder="Digite seu email" id="email-login">
+            <div class="auth-panel">
+                <h1 id="auth-title" class="sr-only">Acesse sua conta Renan Barber</h1>
+                <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
+                    <button class="auth-tab is-active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-form="login-form">Entrar</button>
+                    <button class="auth-tab" id="register-tab" type="button" role="tab" aria-selected="false" aria-controls="register-form" data-form="register-form">Cadastrar</button>
+                </div>
 
-                <label class="control-label" for="senha-login">Senha</label>
-                <input type="text" class="form-group" placeholder="Digite sua senha" id="senha-login">
+                <form class="auth-form is-active" id="login-form" role="tabpanel" aria-labelledby="login-tab">
+                    <div class="field-group">
+                        <label for="email-login">E-mail</label>
+                        <div class="field-control">
+                            <img src="/public/image/icon-email.svg" alt="" aria-hidden="true">
+                            <input type="email" id="email-login" name="email" placeholder="contato@suabarbearia.com" autocomplete="email" required>
+                        </div>
+                    </div>
 
-                <button type="submit" class="btn-login">Entrar</button>
+                    <div class="field-group">
+                        <div class="field-label-row">
+                            <label for="senha-login">Senha</label>
+                            <a href="#">Esqueceu a senha?</a>
+                        </div>
+                        <div class="field-control">
+                            <img src="/public/image/icon-lock.svg" alt="" aria-hidden="true">
+                            <input type="password" id="senha-login" name="password" placeholder="••••••••" autocomplete="current-password" required>
+                            <button class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false" data-password-toggle="senha-login">Mostrar</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        <span>Acessar painel</span>
+                        <img src="/public/image/icon-arrow.svg" alt="" aria-hidden="true">
+                    </button>
+                </form>
+
+                <form class="auth-form auth-form--register" id="register-form" role="tabpanel" aria-labelledby="register-tab" hidden>
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="nome-cadastro">Nome</label>
+                            <div class="field-control field-control--plain">
+                                <input type="text" id="nome-cadastro" name="first_name" placeholder="Seu nome" autocomplete="given-name" required>
+                            </div>
+                        </div>
+                        <div class="field-group">
+                            <label for="sobrenome-cadastro">Sobrenome</label>
+                            <div class="field-control field-control--plain">
+                                <input type="text" id="sobrenome-cadastro" name="last_name" placeholder="Sobrenome" autocomplete="family-name" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="email-cadastro">E-mail</label>
+                        <div class="field-control">
+                            <img src="/public/image/icon-email.svg" alt="" aria-hidden="true">
+                            <input type="email" id="email-cadastro" name="email" placeholder="contato@suabarbearia.com" autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="senha-cadastro">Senha</label>
+                        <div class="field-control">
+                            <img src="/public/image/icon-lock.svg" alt="" aria-hidden="true">
+                            <input type="password" id="senha-cadastro" name="password" placeholder="Mínimo de 8 caracteres" minlength="8" autocomplete="new-password" required>
+                            <button class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false" data-password-toggle="senha-cadastro">Mostrar</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="auth-submit">
+                        <span>Criar conta</span>
+                        <img src="/public/image/icon-arrow.svg" alt="" aria-hidden="true">
+                    </button>
+                </form>
+
+                <p class="auth-feedback" role="status" aria-live="polite" hidden></p>
+                <p class="security-note"><span aria-hidden="true"></span>Protegido por criptografia de ponta a ponta.</p>
             </div>
-
-            <div class="cadastro">
-                <label class="control-label" for="nome-cadastro">Nome</label>
-                <input type="text" class="form-group" placeholder="Digite seu nome" id="nome-cadastro">
-
-                <label class="control-label" for="sobrenome-cadastro">Sobrenome</label>
-                <input type="text" class="form-group" placeholder="Digite seu sobrenome" id="sobrenome-cadastro">
-
-                <label class="control-label" for="email-cadastri">E-mail</label>
-                <input type="text" class="form-group" placeholder="Digite seu email" id="email-cadastro">
-
-                <label class="control-label" for="senha-cadastro">Senha</label>
-                <input type="text" class="form-group" placeholder="Digite sua senha" id="senha-cadastro">
-                <p>Sua senha deve obter no mínimo 8 dígitos.</p>
-
-                <button type="submit" class="btn-cadastro">Cadastrar</button>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
+    <script src="/src/frontend/scripts/main.js"></script>
 </body>
 </html>
