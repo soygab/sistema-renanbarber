@@ -21,14 +21,22 @@ def service_manage(request, pk=None):
         form.save()
         messages.success(request, "Serviço salvo com sucesso.")
         return redirect("service_manage")
-    return render(request, "barbeiro-servicos.html", {"services": Service.objects.all(), "form": form, "editing": service})
+    return render(request, "barbeiro-servicos.html", {
+        "services": Service.objects.filter(active=True),
+        "form": form,
+        "editing": service,
+    })
 
 
 @require_POST
 @barber_required
 def service_delete(request, pk):
     service = get_object_or_404(Service, pk=pk)
-    service.active = False
-    service.save(update_fields=["active", "updated_at"])
-    messages.success(request, "Serviço removido do catálogo.")
+    if service.appointments.exists():
+        service.active = False
+        service.save(update_fields=["active", "updated_at"])
+        messages.success(request, "Serviço arquivado. O histórico dos agendamentos foi preservado.")
+    else:
+        service.delete()
+        messages.success(request, "Serviço excluído com sucesso.")
     return redirect("service_manage")
