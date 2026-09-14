@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0e10">
+    <title>{% block title %}RenanBarber{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+<body class="system-body">
+<div class="system-layout">
+    <aside class="app-sidebar" id="app-sidebar">
+        <a class="app-brand" href="{% url 'entrypoint' %}">
+            <img src="{% static 'image/logo_renanbarber.svg' %}" alt="">
+            <span>Renan<span>Barber</span><small>{% if request.user.role == 'barber' %}Painel da equipe{% else %}Área do cliente{% endif %}</small></span>
+        </a>
+        <nav class="app-nav" aria-label="Navegação principal">
+            {% with page=request.resolver_match.url_name %}
+            {% if request.user.role == 'barber' or request.user.is_superuser %}
+                <a href="{% url 'barber_home' %}" class="{% if page == 'barber_home' %}is-active{% endif %}"><i>▦</i><span>Visão geral</span></a>
+                <a href="{% url 'barber_appointments' %}" class="{% if page == 'barber_appointments' %}is-active{% endif %}"><i>▣</i><span>Agenda do dia</span></a>
+                <a href="{% url 'service_manage' %}" class="{% if page == 'service_manage' or page == 'service_edit' %}is-active{% endif %}"><i>✂</i><span>Serviços</span></a>
+                <a href="{% url 'barber_hours' %}" class="{% if page == 'barber_hours' %}is-active{% endif %}"><i>◷</i><span>Horários</span></a>
+                <a href="{% url 'barber_team' %}" class="{% if page == 'barber_team' %}is-active{% endif %}"><i>+</i><span>Equipe</span></a>
+            {% else %}
+                <a href="{% url 'client_home' %}" class="{% if page == 'client_home' %}is-active{% endif %}"><i>⌂</i><span>Início</span></a>
+                <a href="{% url 'client_appointments' %}" class="{% if page == 'client_appointments' %}is-active{% endif %}"><i>▣</i><span>Meus agendamentos</span></a>
+                <a href="{% url 'service_list' %}" class="{% if page == 'service_list' %}is-active{% endif %}"><i>✂</i><span>Serviços</span></a>
+                <a href="{% url 'appointment_create' %}" class="{% if page == 'appointment_create' or page == 'appointment_edit' %}is-active{% endif %}"><i>+</i><span>Agendar</span></a>
+            {% endif %}
+            {% endwith %}
+        </nav>
+        <div class="sidebar-profile">
+            <span class="avatar">{{ request.user.initials }}</span>
+            <span>{{ request.user.display_name }}<small>{{ request.user.get_role_display }}</small></span>
+            <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="logout-button" type="submit" aria-label="Sair">↗</button></form>
+        </div>
+    </aside>
+    <main class="system-main">
+        <header class="topbar">
+            <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="app-sidebar">☰</button>
+            <div class="topbar-context"><span class="status-dot"></span>{% if request.user.role == 'barber' %}Operação online{% else %}Olá, {{ request.user.first_name|default:request.user.display_name }}{% endif %}</div>
+            <div class="topbar-actions"><a class="icon-btn" href="{% url 'entrypoint' %}" aria-label="Página inicial">⌂</a></div>
+        </header>
+        <div class="content">
+            {% if messages %}<div class="message-stack">{% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</div>
+<script src="{% static 'scripts/components.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

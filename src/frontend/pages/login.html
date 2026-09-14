@@ -1,102 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#101010">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#101010">
     <title>Login | Renan Barber</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 </head>
-<body>
-    <main class="auth-page">
-        <section class="auth-card" aria-labelledby="auth-title">
-            <div class="auth-brand" aria-label="Renan Barber">
-                <span class="brand-glow brand-glow--blue" aria-hidden="true"></span>
-                <span class="brand-glow brand-glow--red" aria-hidden="true"></span>
-                <img src="/public/image/logo_renanbarber.svg" alt="Renan Barber" class="brand-logo">
-            </div>
-
-            <div class="auth-panel">
-                <h1 id="auth-title" class="sr-only">Acesse sua conta Renan Barber</h1>
-                <div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
-                    <button class="auth-tab is-active" id="login-tab" type="button" role="tab" aria-selected="true" aria-controls="login-form" data-form="login-form">Entrar</button>
-                    <button class="auth-tab" id="register-tab" type="button" role="tab" aria-selected="false" aria-controls="register-form" data-form="register-form">Cadastrar</button>
-                </div>
-
-                <form class="auth-form is-active" id="login-form" role="tabpanel" aria-labelledby="login-tab">
-                    <div class="field-group">
-                        <label for="email-login">E-mail</label>
-                        <div class="field-control">
-                            <img src="/public/image/icon-email.svg" alt="" aria-hidden="true">
-                            <input type="email" id="email-login" name="email" placeholder="contato@suabarbearia.com" autocomplete="email" required>
-                        </div>
-                    </div>
-
-                    <div class="field-group">
-                        <div class="field-label-row">
-                            <label for="senha-login">Senha</label>
-                            <a href="#">Esqueceu a senha?</a>
-                        </div>
-                        <div class="field-control">
-                            <img src="/public/image/icon-lock.svg" alt="" aria-hidden="true">
-                            <input type="password" id="senha-login" name="password" placeholder="••••••••" autocomplete="current-password" required>
-                            <button class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false" data-password-toggle="senha-login">Mostrar</button>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="auth-submit">
-                        <span>Acessar painel</span>
-                        <img src="/public/image/icon-arrow.svg" alt="" aria-hidden="true">
-                    </button>
-                </form>
-
-                <form class="auth-form auth-form--register" id="register-form" role="tabpanel" aria-labelledby="register-tab" hidden>
-                    <div class="field-row">
-                        <div class="field-group">
-                            <label for="nome-cadastro">Nome</label>
-                            <div class="field-control field-control--plain">
-                                <input type="text" id="nome-cadastro" name="first_name" placeholder="Seu nome" autocomplete="given-name" required>
-                            </div>
-                        </div>
-                        <div class="field-group">
-                            <label for="sobrenome-cadastro">Sobrenome</label>
-                            <div class="field-control field-control--plain">
-                                <input type="text" id="sobrenome-cadastro" name="last_name" placeholder="Sobrenome" autocomplete="family-name" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field-group">
-                        <label for="email-cadastro">E-mail</label>
-                        <div class="field-control">
-                            <img src="/public/image/icon-email.svg" alt="" aria-hidden="true">
-                            <input type="email" id="email-cadastro" name="email" placeholder="contato@suabarbearia.com" autocomplete="email" required>
-                        </div>
-                    </div>
-
-                    <div class="field-group">
-                        <label for="senha-cadastro">Senha</label>
-                        <div class="field-control">
-                            <img src="/public/image/icon-lock.svg" alt="" aria-hidden="true">
-                            <input type="password" id="senha-cadastro" name="password" placeholder="Mínimo de 8 caracteres" minlength="8" autocomplete="new-password" required>
-                            <button class="password-toggle" type="button" aria-label="Mostrar senha" aria-pressed="false" data-password-toggle="senha-cadastro">Mostrar</button>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="auth-submit">
-                        <span>Criar conta</span>
-                        <img src="/public/image/icon-arrow.svg" alt="" aria-hidden="true">
-                    </button>
-                </form>
-
-                <p class="auth-feedback" role="status" aria-live="polite" hidden></p>
-                <p class="security-note"><span aria-hidden="true"></span>Protegido por criptografia de ponta a ponta.</p>
-            </div>
-        </section>
-    </main>
-    <script src="/src/frontend/scripts/main.js"></script>
-</body>
-</html>
+<body><main class="auth-page"><section class="auth-card" aria-labelledby="auth-title">
+    <div class="auth-brand" aria-label="Renan Barber"><span class="brand-glow brand-glow--blue"></span><span class="brand-glow brand-glow--red"></span><img src="{% static 'image/logo_renanbarber.svg' %}" alt="Renan Barber" class="brand-logo"></div>
+    <div class="auth-panel"><h1 id="auth-title" class="sr-only">Acesse sua conta Renan Barber</h1>
+        <div class="auth-tabs" role="tablist"><button class="auth-tab {% if active_tab != 'register' %}is-active{% endif %}" id="login-tab" type="button" data-form="login-form">Entrar</button><button class="auth-tab {% if active_tab == 'register' %}is-active{% endif %}" id="register-tab" type="button" data-form="register-form">Cadastrar</button></div>
+        <form class="auth-form {% if active_tab != 'register' %}is-active{% endif %}" id="login-form" method="post" action="{% url 'login' %}" {% if active_tab == 'register' %}hidden{% endif %}>{% csrf_token %}
+            {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+            <div class="field-group"><label for="{{ form.username.id_for_label }}">E-mail</label><div class="field-control"><img src="{% static 'image/icon-email.svg' %}" alt="">{{ form.username }}</div>{{ form.username.errors }}</div>
+            <div class="field-group"><div class="field-label-row"><label for="{{ form.password.id_for_label }}">Senha</label></div><div class="field-control"><img src="{% static 'image/icon-lock.svg' %}" alt="">{{ form.password }}<button class="password-toggle" type="button" data-password-toggle="{{ form.password.id_for_label }}">Mostrar</button></div>{{ form.password.errors }}</div>
+            <button type="submit" class="auth-submit"><span>Acessar painel</span><img src="{% static 'image/icon-arrow.svg' %}" alt=""></button>
+        </form>
+        <form class="auth-form auth-form--register {% if active_tab == 'register' %}is-active{% endif %}" id="register-form" method="post" action="{% url 'register' %}" {% if active_tab != 'register' %}hidden{% endif %}>{% csrf_token %}
+            {% if register_form.non_field_errors %}<div class="form-errors">{{ register_form.non_field_errors }}</div>{% endif %}
+            <div class="field-row"><div class="field-group"><label>Nome</label><div class="field-control field-control--plain">{{ register_form.first_name }}</div>{{ register_form.first_name.errors }}</div><div class="field-group"><label>Sobrenome</label><div class="field-control field-control--plain">{{ register_form.last_name }}</div>{{ register_form.last_name.errors }}</div></div>
+            <div class="field-group"><label>E-mail</label><div class="field-control"><img src="{% static 'image/icon-email.svg' %}" alt="">{{ register_form.email }}</div>{{ register_form.email.errors }}</div>
+            <div class="field-row"><div class="field-group"><label>Telefone</label><div class="field-control field-control--plain">{{ register_form.phone }}</div></div><div class="field-group"><label>Senha</label><div class="field-control field-control--plain">{{ register_form.password1 }}</div>{{ register_form.password1.errors }}</div></div>
+            <div class="field-group"><label>Confirmar senha</label><div class="field-control field-control--plain">{{ register_form.password2 }}</div>{{ register_form.password2.errors }}</div>
+            <button type="submit" class="auth-submit"><span>Criar conta</span><img src="{% static 'image/icon-arrow.svg' %}" alt=""></button>
+        </form>
+        <p class="security-note"><span></span>Autenticação protegida pelo Django.</p>
+    </div>
+</section></main><script src="{% static 'scripts/main.js' %}"></script></body></html>

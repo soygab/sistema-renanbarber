@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import BarberAvailability, TimeBlock
+
+
+admin.site.register(BarberAvailability)
+admin.site.register(TimeBlock)

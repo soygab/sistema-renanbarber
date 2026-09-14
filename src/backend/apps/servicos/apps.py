@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class ServicosConfig(AppConfig):
-    name = 'servicos'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.servicos"

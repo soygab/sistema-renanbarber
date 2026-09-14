@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class BarbeirosConfig(AppConfig):
-    name = 'barbeiros'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "apps.barbeiros"
